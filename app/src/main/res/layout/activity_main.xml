@@ -1,208 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/backgr"
+    tools:context=".MainActivity" >
+
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="80dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Tên đăng nhập"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/txtTitle"
+        android:id="@+id/textView5"
+        android:layout_width="143dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="107dp"
+        android:text="Xin chào!"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDangNhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textColor="#130D0D"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:text="ÔN THI BẰNG LÁI XE "
-        android:layout_marginTop="30dp"/>
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="30dp"
+        android:text="Đăng nhập"
+        app:layout_constraintStart_toEndOf="@+id/txtQuenmk"
+        app:layout_constraintTop_toBottomOf="@+id/txtDangKi" />
 
-    <GridLayout
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="345dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="268dp"
+        android:ems="10"
+        android:hint="@string/invalid_password"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="33dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtQuenmk"
         android:layout_width="wrap_content"
-        android:layout_height="605dp"
-        android:layout_below="@id/txtTitle"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="58dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="2dp"
-        android:columnCount="1"
-        android:rowCount="2">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="42dp"
+        android:text="Quên mật khẩu "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
-        <LinearLayout
-            android:id="@+id/ll_thi"
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/backgr"
+    <TextView
+        android:id="@+id/txtDangKi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
+        android:text="Đăng ký tài khoản"
+        app:layout_constraintBottom_toBottomOf="@+id/txtQuenmk"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="10">
-
-            <ImageButton
-                android:id="@+id/imgbtnthi"
-                android:layout_width="80dp"
-                android:background="@drawable/backgr"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:layout_weight="5"
-                android:contentDescription=" "
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/traffic_signs" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="31dp"
-                android:layout_weight="5"
-                android:text="THI SÁT HẠCH"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription=" "
-                android:text=" " />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_on"
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/backgr"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/imgbtnon"
-                android:background="@drawable/backgr"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:contentDescription=" "
-                android:scaleType="fitCenter"
-                android:src="@drawable/exam" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ÔN THI "
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription=" "
-                android:text=" " />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_bien"
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/backgr"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="10">
-
-            <ImageButton
-                android:id="@+id/imgbtnbien"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/backgr"
-                android:layout_gravity="center"
-                android:layout_weight="5"
-                android:contentDescription=" "
-                android:scaleType="fitCenter"
-                android:src="@drawable/prep" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="TRA CỨU BIỂN"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription=" "
-                android:text=" " />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_luat"
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:background="@drawable/backgr"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:weightSum="10">
-
-            <ImageButton
-                android:id="@+id/imgbtnluat"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center"
-                android:background="@drawable/backgr"
-                android:layout_weight="5"
-                android:contentDescription=" "
-                android:scaleType="fitCenter"
-                android:src="@drawable/law" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:text="TRA CỨU LUẬT"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription=" "
-                android:text=" " />
-        </LinearLayout>
-
-    </GridLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
