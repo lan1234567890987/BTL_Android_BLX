@@ -21,6 +21,11 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("CREATE TABLE TaiKhoan(" +
+                "TenDN varchar  primary key," +
+                "MatKhau varchar"+
+                ")"
+        );
         sqLiteDatabase.execSQL("CREATE TABLE LyThuyet(" +
                 "CauHoi varchar  primary key," +
                 "DapAn1 varchar," +
