@@ -11,19 +11,22 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 import object.LyThuyet;
+import object.TaiKhoan;
 
-public class DBHelper extends SQLiteOpenHelper{
 
-    public DBHelper(@Nullable Context context)
-    {
-        super(context, "DB_OnThiBLX", null, 1);
+public class DBHelper extends SQLiteOpenHelper {
+//    public static final String dbName = "DB_OnThiBLX";
+//    public static final String dbtb = "TaiKhoan";TaiKhoan
+
+    public DBHelper(@Nullable Context context) {
+        super(context, "DB_OnThiBLX", null, 2);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE TaiKhoan(" +
-                "TenDN varchar  primary key," +
-                "MatKhau varchar"+
+                "Username varchar  primary key," +
+                "Password varchar" +
                 ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE LyThuyet(" +
@@ -78,8 +81,65 @@ public class DBHelper extends SQLiteOpenHelper{
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS LyThuyetHinhAnh");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS BienBao");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Luat");
-        onCreate(sqLiteDatabase);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS TAIKHOAN");
+        onCreate(sqLiteDatabase);//xoa để tạo bảng mới khi phiên bản mới csdl dc cập nhật
     }
+
+    public void insertDbTaiKhoan(TaiKhoan tk) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("Username", tk.getUsername());
+        contentValues.put("Password", tk.getPassword());
+
+        int result = (int) db.insert("TaiKhoan", null, contentValues);
+        db.close();
+    }
+
+
+    public Boolean checkUP(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from TaiKhoan where username = ? and password = ?", new String[]{username,password});
+//doan xac thuc dang nhap ra failed
+        if (cursor.getCount()>0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public boolean isUsernameExists(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from TaiKhoan where username = ?", new String[]{username});
+
+        if (cursor.moveToFirst() && cursor!=null) {
+            cursor.close();
+            db.close();
+            return true;
+        }
+        return false;
+    }
+
+
+//    public void createTaiKhoan() {
+//        //Kiểm tra dữ liệu đã được add vào DB hay chưa
+//        String countQuery = "SELECT  * FROM " + "TaiKhoan";
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(countQuery, null);
+//
+//        int count = cursor.getCount();
+//
+//        if(count == 0)
+//        {
+//            TaiKhoan tk1 = new TaiKhoan("12345","12345");
+//            insertDbTaiKhoan(tk1);
+//        }
+//    }
+
+
+
+
     public  void insertDbLyThuyet(LyThuyet lt) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

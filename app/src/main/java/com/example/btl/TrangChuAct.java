@@ -14,7 +14,7 @@ public class TrangChuAct extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_trang_chu);
 
         LL_thi=(LinearLayout) findViewById(R.id.ll_thi);
         LL_on=(LinearLayout) findViewById(R.id.ll_on);
